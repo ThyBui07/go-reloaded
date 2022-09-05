@@ -18,7 +18,8 @@ func main() {
 	stringI = regexp.MustCompile(regPunc).ReplaceAllStringFunc(stringI, addSpace)
 	fmt.Println(stringI)
 
-	//regQuote := `\'\s*[[:print:]]+\s*\'`
+	regQuote := `\'\s*(.+?)\s*\'`
+	stringI = regexp.MustCompile(regQuote).ReplaceAllString(stringI, "'$1'")
 
 	regIns := `\((up|low|cap)(,\s*(\d*))\)`
 	stringI = regexp.MustCompile(regIns).ReplaceAllStringFunc(stringI, replaceWhiteSpace)
